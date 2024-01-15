@@ -11,7 +11,7 @@ const MainBox = () => {
     ])
 
     return (  
-        <div className="bg-zinc-400 grid row-auto gap-5 p-4 shadow-lg">
+        <div className="grid row-auto gap-5 p-4 shadow-lg bg-zinc-400">
             <Score />
             <table>
                 {table.map((row, i) => (
@@ -19,7 +19,7 @@ const MainBox = () => {
                         {row.map((cell, j) => (
                             <td 
                                 key={j} 
-                                className="h-[100px] w-[100px] text-center text-3xl border-r-2 last:border-r-0 border-zinc-700"
+                                className="h-[100px] w-[100px] text-center text-3xl border-r-2 last:border-r-0 border-zinc-700 cursor-pointer hover:bg-zinc-500 duration-300"
                             >{cell}</td>
                         ))}
                     </tr>
