@@ -141,7 +141,7 @@ const MainBox = () => {
     }
 
     return (  
-        <div className="grid row-auto gap-5 p-4 shadow-lg bg-zinc-400">
+        <div className="grid row-auto gap-5 p-4 shadow-lg max-sm:scale-75 bg-zinc-400">
             <Score score={score}/>
             <table>
                 {table.map((row, i) => (
