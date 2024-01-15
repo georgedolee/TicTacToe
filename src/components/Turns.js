@@ -1,8 +1,9 @@
-
+import choosingPlayersSound from '../sounds/choosingPlayer.wav';
 
 const Turns = ({reset, setPlayers, gameStarted, setGameStarted, currentPlayer}) => {
     const handlePlayers = (player) => {
         if(!gameStarted){
+            new Audio(choosingPlayersSound).play();
             if(player === 'X'){
                 setPlayers({user: 'X', computer: 'O'});
             } else {

@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import Score from "./Score";
 import Turns from "./Turns";
+import userPlayedSound from '../sounds/userPlayed.wav';
+import computerPlayedSound from '../sounds/computerPlayed.wav';
+import restartSound from '../sounds/restart.wav';
+import gameOverSound from '../sounds/gameOver.wav';
 
 const MainBox = () => {
     const [players, setPlayers] = useState({user: null, computer: null})
@@ -15,6 +19,7 @@ const MainBox = () => {
         ['','',''],
         ['','',''],
     ])
+
 
     function evaluation(newTable){
         let c = 0;
@@ -49,7 +54,8 @@ const MainBox = () => {
             return 10 + c;
           }
         }
-    
+        
+        setWinningCells({row: null, col: null, diagonal: null});
         return 0;
     }
     
@@ -100,11 +106,13 @@ const MainBox = () => {
             }
             newTable[c1][c2] = players.computer;
             setTimeout(() => {
+                new Audio(computerPlayedSound).play();
                 setTable(newTable);
                 setMoves((prev) => prev - 1);
                 setCurrentPlayer(players.user);
-            }, moves * 150);
+            }, moves * 100);
         } else if (evaluation(table) !== 0 || moves === 0) {
+            new Audio(gameOverSound).play();
             setGameEnded(true);
             let outcome = evaluation(table);
             if (outcome === 0) {
@@ -121,6 +129,7 @@ const MainBox = () => {
         if(moves != 0 && table[i][j] === '' && currentPlayer === players.user && evaluation(table) === 0){
             const newTable = table.map(row => [...row]);
             newTable[i][j] = players.user;
+            new Audio(userPlayedSound).play();
             setTable(newTable);
             setCurrentPlayer(players.computer);
             setMoves((prev) => prev - 1);
@@ -128,6 +137,7 @@ const MainBox = () => {
     };
 
     const reset = () => {
+        new Audio(restartSound).play();
         setTable([
             ['','',''],
             ['','',''],
@@ -141,7 +151,7 @@ const MainBox = () => {
     }
 
     return (  
-        <div className="grid row-auto gap-5 p-4 shadow-lg max-sm:scale-75 bg-zinc-400">
+        <div className="grid row-auto gap-5 p-4 shadow-lg max-sm:scale-90 xl:scale-110 bg-zinc-400">
             <Score score={score}/>
             <table>
                 {table.map((row, i) => (
