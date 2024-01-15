@@ -159,7 +159,7 @@ const MainBox = () => {
                         {row.map((cell, j) => (
                             <td 
                                 key={j} 
-                                className={`${gameEnded && winningCells.col === j ? 'bg-zinc-500 text-zinc-400' : ''} ${gameEnded && winningCells.diagonal === 'main' && i === j ? 'bg-zinc-500 text-zinc-400' : ''} ${gameEnded && winningCells.diagonal === 'counter' && i + j === 2 ? 'bg-zinc-500 text-zinc-400' : ''} active:bg-zinc-500 active:text-zinc-400 h-[100px] w-[100px] text-center text-3xl border-r-2 last:border-r-0 border-zinc-700 cursor-pointer duration-300`}
+                                className={`${gameEnded && winningCells.col === j ? 'bg-zinc-500 text-zinc-400' : ''} ${gameEnded && winningCells.diagonal === 'main' && i === j ? 'bg-zinc-500 text-zinc-400' : ''} ${gameEnded && winningCells.diagonal === 'counter' && i + j === 2 ? 'bg-zinc-500 text-zinc-400' : ''} active:bg-zinc-500 active:text-zinc-400 h-[100px] w-[100px] text-center text-3xl text-zinc-700 border-r-2 last:border-r-0 border-zinc-700 cursor-pointer duration-300`}
                                 onClick={() => handleClick(i, j)}
                             >{cell}</td>
                         ))}
