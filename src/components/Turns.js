@@ -1,6 +1,6 @@
 
 
-const Turns = ({reset, setPlayers, gameStarted, setGameStarted}) => {
+const Turns = ({reset, setPlayers, gameStarted, setGameStarted, currentPlayer}) => {
     const handlePlayers = (player) => {
         if(!gameStarted){
             if(player === 'X'){
@@ -16,7 +16,7 @@ const Turns = ({reset, setPlayers, gameStarted, setGameStarted}) => {
         <div className="w-[300px] h-[80px] grid items-center grid-cols-3 justify-items-center">
             <button 
                 className={`w-[80px] h-[40px] flex items-center 
-                text-xl  ${gameStarted? 'bg-zinc-700 text-zinc-400': 'bg-zinc-400 text-zinc-700 border-2 border-zinc-700 hover:bg-zinc-700 hover:text-zinc-400 active:scale-95 duration-300'}  rounded-md shadow-md justify-center ease-in delay-75 `}
+                text-xl  ${gameStarted? currentPlayer === 'X'? 'bg-zinc-700 text-zinc-400' : 'bg-zinc-400 text-zinc-700 border-2 border-zinc-700' : 'bg-zinc-400 text-zinc-700 border-2 border-zinc-700 hover:bg-zinc-700 hover:text-zinc-400 active:scale-95 '} duration-300 rounded-md shadow-md justify-center ease-in delay-75 `}
                 onClick={() => handlePlayers('X')}
             >X</button>
             
@@ -35,7 +35,7 @@ const Turns = ({reset, setPlayers, gameStarted, setGameStarted}) => {
 
             <button 
                 className={`w-[80px] h-[40px] flex items-center 
-                text-xl  ${gameStarted? 'bg-zinc-700 text-zinc-400': 'bg-zinc-400 text-zinc-700 border-2 border-zinc-700 hover:bg-zinc-700 hover:text-zinc-400 active:scale-95 duration-300'}  rounded-md shadow-md justify-center ease-in delay-75 `}
+                text-xl  ${gameStarted? currentPlayer === 'O'? 'bg-zinc-700 text-zinc-400' : 'bg-zinc-400 text-zinc-700 border-2 border-zinc-700' : 'bg-zinc-400 text-zinc-700 border-2 border-zinc-700 hover:bg-zinc-700 hover:text-zinc-400 active:scale-95 '} duration-300 rounded-md shadow-md justify-center ease-in delay-75 `}
                 onClick={() => handlePlayers('O')}
             >O</button>
         </div>

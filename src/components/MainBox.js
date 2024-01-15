@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Score from "./Score";
 import Turns from "./Turns";
 
@@ -6,11 +6,20 @@ import Turns from "./Turns";
 const MainBox = () => {
     const [players, setPlayers] = useState({user: null, computer: null})
     const [gameStarted, setGameStarted] = useState(false);
+    const [currentPlayer, setCurrentPlayer] = useState(null);
     const [table, setTable] = useState([
         ['','',''],
         ['','',''],
         ['','',''],
     ])
+
+    useEffect(() => {
+        if(gameStarted){
+            currentPlayer === 'X'? setCurrentPlayer('O') : setCurrentPlayer('X');
+        } else {
+            setCurrentPlayer('X');
+        }
+    }, [table, gameStarted]); 
 
     const handleClick = (i, j) => {
         const newTable = table.map(row => [...row]);
@@ -44,7 +53,7 @@ const MainBox = () => {
                     </tr>
                 ))}
             </table>
-            <Turns reset={reset} setPlayers={setPlayers} gameStarted={gameStarted} setGameStarted={setGameStarted} />
+            <Turns reset={reset} setPlayers={setPlayers} gameStarted={gameStarted} setGameStarted={setGameStarted} currentPlayer={currentPlayer} />
         </div>
     );
 }
