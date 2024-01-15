@@ -22,14 +22,14 @@ const Turns = ({reset, setPlayers, gameStarted, setGameStarted, currentPlayer}) 
             
             {gameStarted && 
                 <button 
-                    className="px-4 py-2 text-xl duration-300 ease-in delay-300 rounded-md shadow-md bg-zinc-700 text-zinc-400 hover:bg-zinc-600 active:scale75"
+                    className="px-4 py-2 text-lg duration-300 ease-in delay-300 rounded-md shadow-md bg-zinc-700 text-zinc-400 hover:bg-zinc-600 active:scale75"
                     onClick={() => reset()}
                 >RESTART</button>
             }
 
             {!gameStarted && 
                 <button 
-                    className="px-4 py-2 text-xl font-bold duration-300 ease-in delay-300 cursor-default bg-zinc-400 text-zinc-75"
+                    className="px-4 py-2 text-lg font-bold duration-300 ease-in delay-300 cursor-default bg-zinc-400 text-zinc-75"
                 >Choose <br /> Player</button>
             }
 
