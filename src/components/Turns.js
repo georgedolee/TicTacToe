@@ -1,15 +1,43 @@
 
 
-const Turns = () => {
+const Turns = ({reset, setPlayers, gameStarted, setGameStarted}) => {
+    const handlePlayers = (player) => {
+        if(!gameStarted){
+            if(player === 'X'){
+                setPlayers({user: 'X', computer: 'O'});
+            } else {
+                setPlayers({user: 'O', computer: 'X'});
+            }
+            setGameStarted(true);
+        }
+    }
+
     return (  
-        <div className="grid items-center grid-cols-3 justify-items-center">
-            <h1 className="w-[80px] h-[40px] flex items-center justify-center 
-                text-xl text-zinc-400 bg-zinc-700 rounded-md shadow-md">X</h1>
+        <div className="w-[300px] h-[80px] grid items-center grid-cols-3 justify-items-center">
+            <button 
+                className={`w-[80px] h-[40px] flex items-center 
+                text-xl  ${gameStarted? 'bg-zinc-700 text-zinc-400': 'bg-zinc-400 text-zinc-700 border-2 border-zinc-700 hover:bg-zinc-700 hover:text-zinc-400 active:scale-95 duration-300'}  rounded-md shadow-md justify-center ease-in delay-75 `}
+                onClick={() => handlePlayers('X')}
+            >X</button>
+            
+            {gameStarted && 
+                <button 
+                    className="px-4 py-2 text-xl duration-300 ease-in delay-300 rounded-md shadow-md bg-zinc-700 text-zinc-400 hover:bg-zinc-600 active:scale75"
+                    onClick={() => reset()}
+                >RESTART</button>
+            }
 
-            <button className="px-4 py-2 text-xl duration-300 rounded-md shadow-md bg-zinc-700 text-zinc-400 hover:bg-zinc-600 active:scale-95">RESTART</button>
+            {!gameStarted && 
+                <button 
+                    className="px-4 py-2 text-xl font-bold duration-300 ease-in delay-300 cursor-default bg-zinc-400 text-zinc-75"
+                >Choose <br /> Player</button>
+            }
 
-            <h1 className="h-[40px] flex items-center 
-                text-xl  bg-zinc-700 w-[80px]  text-zinc-400 rounded-md shadow-md justify-center ">O</h1>
+            <button 
+                className={`w-[80px] h-[40px] flex items-center 
+                text-xl  ${gameStarted? 'bg-zinc-700 text-zinc-400': 'bg-zinc-400 text-zinc-700 border-2 border-zinc-700 hover:bg-zinc-700 hover:text-zinc-400 active:scale-95 duration-300'}  rounded-md shadow-md justify-center ease-in delay-75 `}
+                onClick={() => handlePlayers('O')}
+            >O</button>
         </div>
     );
 }

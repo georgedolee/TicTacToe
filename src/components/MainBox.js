@@ -4,11 +4,29 @@ import Turns from "./Turns";
 
 
 const MainBox = () => {
+    const [players, setPlayers] = useState({user: null, computer: null})
+    const [gameStarted, setGameStarted] = useState(false);
     const [table, setTable] = useState([
         ['','',''],
         ['','',''],
         ['','',''],
     ])
+
+    const handleClick = (i, j) => {
+        const newTable = table.map(row => [...row]);
+        newTable[i][j] = players.user;
+        setTable(newTable);
+    };
+
+    const reset = () => {
+        setTable([
+            ['','',''],
+            ['','',''],
+            ['','',''],
+        ]);
+        setPlayers({user: null, computer: null});
+        setGameStarted(false);
+    }
 
     return (  
         <div className="grid row-auto gap-5 p-4 shadow-lg bg-zinc-400">
@@ -20,12 +38,13 @@ const MainBox = () => {
                             <td 
                                 key={j} 
                                 className="h-[100px] w-[100px] text-center text-3xl border-r-2 last:border-r-0 border-zinc-700 cursor-pointer hover:bg-zinc-500 duration-300"
+                                onClick={() => handleClick(i, j)}
                             >{cell}</td>
                         ))}
                     </tr>
                 ))}
             </table>
-            <Turns />
+            <Turns reset={reset} setPlayers={setPlayers} gameStarted={gameStarted} setGameStarted={setGameStarted} />
         </div>
     );
 }
