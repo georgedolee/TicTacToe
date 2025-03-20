@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/TicTacToe/static/css/main.22c86851.css",
+    "main.js": "/TicTacToe/static/js/main.72e925a4.js",
+    "static/media/restart.wav": "/TicTacToe/static/media/restart.b1921f571e5976b70850.wav",
+    "static/media/gameOver.wav": "/TicTacToe/static/media/gameOver.b222ebf03a29c11b61f0.wav",
+    "static/media/computerPlayed.wav": "/TicTacToe/static/media/computerPlayed.e8c6c391d7f99ba65c9f.wav",
+    "static/media/userPlayed.wav": "/TicTacToe/static/media/userPlayed.63f0b12414f605e55c2b.wav",
+    "static/media/choosingPlayer.wav": "/TicTacToe/static/media/choosingPlayer.03ee3acc87b2c1bf83e9.wav",
+    "index.html": "/TicTacToe/index.html",
+    "main.22c86851.css.map": "/TicTacToe/static/css/main.22c86851.css.map",
+    "main.72e925a4.js.map": "/TicTacToe/static/js/main.72e925a4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.22c86851.css",
+    "static/js/main.72e925a4.js"
+  ]
+}
